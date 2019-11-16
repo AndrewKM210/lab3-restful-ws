@@ -47,4 +47,20 @@ public class AddressBook {
     nextId++;
     return oldValue;
   }
+
+  @Override
+  public boolean equals(Object other) {
+    if (this == other) {
+      return true;
+    }
+    if (other == null) {
+      return false;
+    }
+    if (this.getClass() == other.getClass()) {
+      AddressBook otherAddressBook = (AddressBook) other;
+      return this.nextId == otherAddressBook.nextId && this.personList.equals(otherAddressBook.personList);
+    } else {
+      return false;
+    }
+  }
 }

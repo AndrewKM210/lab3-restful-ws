@@ -62,4 +62,29 @@ public class Person {
   public void setHref(URI href) {
     this.href = href;
   }
+
+  @Override
+  public boolean equals(Object other) {
+    if (this == other) {
+      return true;
+    }
+    if (other == null) {
+      return false;
+    }
+
+    // Fields may be null
+    if (this.getClass() == other.getClass()) {
+      Person otherPerson = (Person) other;
+      return ((this.name == null && otherPerson.name == null)
+          || (this.name != null && this.name.equals(otherPerson.name)))
+          && this.id == otherPerson.id
+          && ((this.email == null && otherPerson.email == null)
+          || this.email != null && this.email.equals(otherPerson.email))
+          && ((this.href == null && otherPerson.href == null)
+          || (this.href != null && this.href.equals(otherPerson.href)))
+          && this.phoneList.equals(otherPerson.phoneList);
+    } else {
+      return false;
+    }
+  }
 }
